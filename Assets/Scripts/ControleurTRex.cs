@@ -33,18 +33,18 @@ public class ControleurTRex : MonoBehaviour
     /// Méthode qui reçoit les messages de déplacement du InputSystem.
     /// </summary>
     /// <param name="valeur">La valeur entrée entrée du déplacement sur deux axes.</param>
-    public void OnDeplacement(InputValue valeur)
+    public void Deplacer(InputAction.CallbackContext contexte)
     {
-        deplacement = valeur.Get<Vector2>();
+        deplacement = contexte.action.ReadValue<Vector2>();
     }
 
     /// <summary>
     /// Méthode qui reçoit les messages de rotation du InputSystem.
     /// </summary>
     /// <param name="valeur">La valeur entrée entrée du déplacement sur un axe.</param>
-    public void OnRotation(InputValue valeur)
+    public void Rotater(InputAction.CallbackContext contexte)
     {
-        rotation = valeur.Get<float>();
+        rotation = contexte.action.ReadValue<float>();
     }
 
     /// <summary>

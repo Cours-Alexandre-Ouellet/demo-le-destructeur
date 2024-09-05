@@ -20,7 +20,7 @@ public class PotFleur : MonoBehaviour
     /// <summary>
     /// Action du joueur casser
     /// </summary>
-    public void OnCasser()
+    public void Casser()
     {
         // S'il y a un pot, on le supprime
         if (potInitial != null)
