@@ -18,15 +18,28 @@ public class PotFleur : MonoBehaviour
     private GameObject potCasse;
 
     /// <summary>
-    /// Action du joueur casser
+    /// Appellée lorsque le pot entre en colision avec un autre objet
     /// </summary>
-    public void Casser()
+    /// <param name="collision">Données sur la collision</param>
+    public void OnCollisionEnter(Collision collision)
     {
+        // Force reçue par le pot
+        Vector3 impulsion = 0.1f * collision.impulse;       // 0.1f pour diviser la force par 10 (nombre de morceaux)
+
         // S'il y a un pot, on le supprime
         if (potInitial != null)
         {
-            Destroy(potInitial);
-            GameObject nouvelObjet = Instantiate(potCasse, transform);      // Nouveau pot cassé
+            Destroy(potInitial);                // Retire le pot complet
+            GameObject nouveauPot = Instantiate(potCasse, transform);      // Nouveau pot cassé
+            
+            // Récupère le rigidbody de chaque morceau 
+            Rigidbody[] morceaux = nouveauPot.GetComponentsInChildren<Rigidbody>(); 
+
+            foreach (Rigidbody rigidbodyMorceau in morceaux)
+            {
+                // Applique la force adéquate
+                rigidbodyMorceau.AddForce(impulsion, ForceMode.Impulse);
+            }
         }
     }
 }

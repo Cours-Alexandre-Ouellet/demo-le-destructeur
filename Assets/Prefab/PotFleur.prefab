@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8667370640791131827}
   - component: {fileID: 1799203435850660173}
+  - component: {fileID: 7399339629637183727}
   m_Layer: 0
   m_Name: PotFleur
   m_TagString: Untagged
@@ -48,6 +49,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potInitial: {fileID: 4495884370526475414}
   potCasse: {fileID: 6910915094814133117, guid: 07eebfaf61515f94d9e995e6cc7b6b27, type: 3}
+--- !u!54 &7399339629637183727
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636667307006086441}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2744177961518633680
 PrefabInstance:
   m_ObjectHideFlags: 0
