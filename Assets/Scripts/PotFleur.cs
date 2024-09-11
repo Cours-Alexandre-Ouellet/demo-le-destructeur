@@ -1,10 +1,17 @@
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 
 /// <summary>
 /// Gère la physique des pots de fleurs
 /// </summary>
 public class PotFleur : MonoBehaviour
 {
+    /// <summary>
+    /// Événement où le pot casse
+    /// </summary>
+    public UnityEvent<Transform[]> OnCasser;
+
     /// <summary>
     /// Le pot de fleur affiché au joueur
     /// </summary>
@@ -40,6 +47,9 @@ public class PotFleur : MonoBehaviour
                 // Applique la force adéquate
                 rigidbodyMorceau.AddForce(impulsion, ForceMode.Impulse);
             }
+
+            // Appelle l'événement pour indiquer qu'un pot a été cassé
+            OnCasser?.Invoke(nouveauPot.GetComponentsInChildren<Transform>());
         }
     }
 }

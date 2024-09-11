@@ -23,6 +23,12 @@ public class GenerateurPots : MonoBehaviour
     /// Liste des pots de fleurs qui sont sur le jeu
     /// </summary>
     private List<PotFleur> potsFleur;
+    
+    /// <summary>
+    /// Référence sur la roomba active
+    /// </summary>
+    [SerializeField]
+    private Roomba roomba;
 
     /// <summary>
     /// Méthode appelée à l'initialisation de l'objet au début de l'itération
@@ -59,8 +65,6 @@ public class GenerateurPots : MonoBehaviour
 
         // Version améliorée qui récupère que les component EmplacementPot
         // emplacementsPot = transform.GetComponentsInChildren<EmplacementPot>();
-
-
     }
 
     /// <summary>
@@ -91,7 +95,10 @@ public class GenerateurPots : MonoBehaviour
             // Crée le nouveau pot
             PotFleur nouveauPot = Instantiate(prototypePot);
             nouveauPot.transform.position = emplacement.transform.position;
-            
+
+            // Lie l'événement à la roomba
+            nouveauPot.OnCasser.AddListener(roomba.RamasserMorceaux);
+
             // Met à jour l'emplacement
             emplacement.EstOccupe = true;
 
