@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8667370640791131827}
   - component: {fileID: 1799203435850660173}
   - component: {fileID: 7399339629637183727}
+  - component: {fileID: 4546598196908740256}
   m_Layer: 0
   m_Name: PotFleur
   m_TagString: Untagged
@@ -47,8 +48,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37494aa884cc344ba59c362df634eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnCasser:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDestructionObjet:
+    m_PersistentCalls:
+      m_Calls: []
   potInitial: {fileID: 4495884370526475414}
   potCasse: {fileID: 6910915094814133117, guid: 07eebfaf61515f94d9e995e6cc7b6b27, type: 3}
+  fleur: {fileID: 38631879708762340}
 --- !u!54 &7399339629637183727
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,6 +84,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4546598196908740256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636667307006086441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee684f7f2bbc8d47941dca5b8473faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2744177961518633680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,6 +246,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7431685386487335090, guid: 0b7dbe0646775054da4bfcc136047158, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6153288565393851158}
+    - targetCorrespondingSourceObject: {fileID: 7431685386487335090, guid: 0b7dbe0646775054da4bfcc136047158, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7815000516767674959}
+    - targetCorrespondingSourceObject: {fileID: 7431685386487335090, guid: 0b7dbe0646775054da4bfcc136047158, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2436555904457951696}
   m_SourcePrefab: {fileID: 100100000, guid: 0b7dbe0646775054da4bfcc136047158, type: 3}
 --- !u!1 &38631879708762340 stripped
 GameObject:
@@ -253,6 +279,46 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.27777007, y: 0.3147511, z: 0.2254221}
   m_Center: {x: -0.000000014901161, y: 0.34268305, z: -0.00022917986}
+--- !u!114 &7815000516767674959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38631879708762340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &2436555904457951696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38631879708762340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4546598196908740256}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &822727556312273254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7836671669600713008, guid: 0b7dbe0646775054da4bfcc136047158, type: 3}

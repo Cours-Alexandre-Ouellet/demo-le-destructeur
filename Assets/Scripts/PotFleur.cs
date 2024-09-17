@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// Gère la physique des pots de fleurs
@@ -13,6 +14,11 @@ public class PotFleur : MonoBehaviour
     public UnityEvent<Transform[]> OnCasser;
 
     /// <summary>
+    /// ÉVénement lorsqu'on détruit l'objet
+    /// </summary>
+    public UnityEvent<PotFleur> OnDestructionObjet;
+
+    /// <summary>
     /// Le pot de fleur affiché au joueur
     /// </summary>
     [SerializeField]
@@ -23,6 +29,17 @@ public class PotFleur : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GameObject potCasse;
+
+    /// <summary>
+    /// La fleur dans le pot
+    /// </summary>
+    [SerializeField]
+    private GameObject fleur;
+
+    /// <summary>
+    /// L'emplacement où il est créé.
+    /// </summary>
+    public EmplacementPot Emplacement {get; private set;}
 
     /// <summary>
     /// Appellée lorsque le pot entre en colision avec un autre objet
@@ -49,7 +66,37 @@ public class PotFleur : MonoBehaviour
             }
 
             // Appelle l'événement pour indiquer qu'un pot a été cassé
-            OnCasser?.Invoke(nouveauPot.GetComponentsInChildren<Transform>());
+            List<Transform> morceauARamasser = 
+                new List<Transform>(nouveauPot.GetComponentsInChildren<Transform>());
+            morceauARamasser.Add(fleur.transform);
+
+            OnCasser?.Invoke(morceauARamasser.ToArray());
+
+            // Liaison de l'événement de suppression
+            EnfantSupprime potCasseSuppression =
+                nouveauPot.GetComponent<EnfantSupprime>();
+
+            ParentSupprimeCascade supresseurCascade = GetComponent<ParentSupprimeCascade>();
+
+            potCasseSuppression.onSupprime.AddListener(supresseurCascade.GererSuppression);
         }
+    }
+
+    /// <summary>
+    /// Permet d'assigner un emplacement au pot de fleur
+    /// </summary>
+    /// <param name="emplacement"></param>
+    public void SetEmplacement(EmplacementPot emplacement)
+    {
+        transform.position = emplacement.transform.position;
+        Emplacement = emplacement;
+    }
+
+    /// <summary>
+    /// Moment de la boucle ou le pot est détruit
+    /// </summary>
+    public void OnDestroy()
+    {
+        OnDestructionObjet?.Invoke(this);
     }
 }

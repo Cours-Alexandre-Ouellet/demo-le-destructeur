@@ -94,7 +94,7 @@ public class GenerateurPots : MonoBehaviour
 
             // Crée le nouveau pot
             PotFleur nouveauPot = Instantiate(prototypePot);
-            nouveauPot.transform.position = emplacement.transform.position;
+            nouveauPot.SetEmplacement(emplacement);
 
             // Lie l'événement à la roomba
             nouveauPot.OnCasser.AddListener(roomba.RamasserMorceaux);
@@ -104,7 +104,20 @@ public class GenerateurPots : MonoBehaviour
 
             // Ajoute la référence à la liste
             potsFleur.Add(nouveauPot);
+
+            // Liaison de l'événement de suppression
+            nouveauPot.OnDestructionObjet.AddListener(RetirerReferencePot);
         }
 
+    }
+
+    /// <summary>
+    /// Retire le pot de fleur détruit de la gestion du générateur
+    /// </summary>
+    /// <param name="potDetruit">le pot détruit</param>
+    public void RetirerReferencePot(PotFleur potDetruit)
+    {
+        potDetruit.Emplacement.EstOccupe = false;
+        potsFleur.Remove(potDetruit);
     }
 }

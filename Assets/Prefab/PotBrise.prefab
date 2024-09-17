@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4820029955057813519}
   - component: {fileID: 2411304872108488777}
   - component: {fileID: 7500907444291873494}
+  - component: {fileID: 1667478944840055269}
+  - component: {fileID: 1833519475802774574}
   m_Layer: 9
   m_Name: PotBrise_cell_09
   m_TagString: MorceauCasse
@@ -134,9 +136,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &1667478944840055269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379212860359146157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &1833519475802774574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379212860359146157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &814184215283684859
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +192,8 @@ GameObject:
   - component: {fileID: 9144866177970749876}
   - component: {fileID: 2158817178646182961}
   - component: {fileID: 886378306297216685}
+  - component: {fileID: 1555847925936145966}
+  - component: {fileID: 7217590626899060069}
   m_Layer: 9
   m_Name: PotBrise_cell_08
   m_TagString: MorceauCasse
@@ -271,9 +315,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &1555847925936145966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814184215283684859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &7217590626899060069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814184215283684859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1790210978322143262
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +371,8 @@ GameObject:
   - component: {fileID: 2487399170285346058}
   - component: {fileID: 2499428073811965530}
   - component: {fileID: 6919117235256829642}
+  - component: {fileID: 8942636511294309565}
+  - component: {fileID: 3631760721483199008}
   m_Layer: 9
   m_Name: PotBrise_cell_02
   m_TagString: MorceauCasse
@@ -409,9 +495,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &8942636511294309565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790210978322143262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &3631760721483199008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790210978322143262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2585948204935642388
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +551,8 @@ GameObject:
   - component: {fileID: 3003522148119851175}
   - component: {fileID: 3408745927245006170}
   - component: {fileID: 3433179746073821399}
+  - component: {fileID: 5647609470974520179}
+  - component: {fileID: 5828921084423047007}
   m_Layer: 9
   m_Name: PotBrise_cell_03
   m_TagString: MorceauCasse
@@ -547,9 +675,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &5647609470974520179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585948204935642388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &5828921084423047007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585948204935642388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5224001026407246162
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +731,8 @@ GameObject:
   - component: {fileID: 8533967708479177958}
   - component: {fileID: 7048957654742426006}
   - component: {fileID: 279591168948104060}
+  - component: {fileID: 3156872336791394899}
+  - component: {fileID: 3969261630516737838}
   m_Layer: 9
   m_Name: PotBrise_cell_05
   m_TagString: MorceauCasse
@@ -685,9 +855,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &3156872336791394899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224001026407246162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &3969261630516737838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224001026407246162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5884442068940482489
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +911,8 @@ GameObject:
   - component: {fileID: 4897940751138539508}
   - component: {fileID: 1623653125311392455}
   - component: {fileID: 4837142413230565309}
+  - component: {fileID: 1344010131109891026}
+  - component: {fileID: 7091814180275382515}
   m_Layer: 9
   m_Name: PotBrise_cell_04
   m_TagString: MorceauCasse
@@ -823,9 +1035,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &1344010131109891026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884442068940482489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &7091814180275382515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884442068940482489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6372434377946666206
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +1091,8 @@ GameObject:
   - component: {fileID: 8220316557968659012}
   - component: {fileID: 2319143954435933493}
   - component: {fileID: 6746346757586483556}
+  - component: {fileID: 7052340419388013796}
+  - component: {fileID: 6355169197141262892}
   m_Layer: 9
   m_Name: PotBrise_cell_00
   m_TagString: MorceauCasse
@@ -961,9 +1215,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &7052340419388013796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372434377946666206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &6355169197141262892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372434377946666206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6533625155168109923
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +1271,8 @@ GameObject:
   - component: {fileID: 6876559868579303070}
   - component: {fileID: 5947542878483422378}
   - component: {fileID: 3592001127505879986}
+  - component: {fileID: 3442914246756728877}
+  - component: {fileID: 421894968398063727}
   m_Layer: 9
   m_Name: PotBrise_cell_07
   m_TagString: MorceauCasse
@@ -1099,9 +1395,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &3442914246756728877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533625155168109923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &421894968398063727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533625155168109923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6910915094814133117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,6 +1447,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8624646190247006799}
+  - component: {fileID: 4783529898591471532}
+  - component: {fileID: -7758335646541248593}
   m_Layer: 0
   m_Name: PotBrise
   m_TagString: Untagged
@@ -1143,6 +1481,33 @@ Transform:
   - {fileID: 7895519479014820549}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4783529898591471532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910915094814133117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee684f7f2bbc8d47941dca5b8473faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7758335646541248593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910915094814133117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6990060528047459955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1521,8 @@ GameObject:
   - component: {fileID: 6531285877202194563}
   - component: {fileID: 6582195023479283959}
   - component: {fileID: 4174301118665087097}
+  - component: {fileID: 136657597632866539}
+  - component: {fileID: 3841737330802674535}
   m_Layer: 9
   m_Name: PotBrise_cell_01
   m_TagString: MorceauCasse
@@ -1278,9 +1645,49 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &136657597632866539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6990060528047459955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &3841737330802674535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6990060528047459955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8478004500585974404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,6 +1701,8 @@ GameObject:
   - component: {fileID: 8220586709610516353}
   - component: {fileID: 221243202076714098}
   - component: {fileID: 1676422789957221503}
+  - component: {fileID: 4478466339885671205}
+  - component: {fileID: 8656728259614354555}
   m_Layer: 9
   m_Name: PotBrise_cell_06
   m_TagString: MorceauCasse
@@ -1415,6 +1824,46 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &4478466339885671205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478004500585974404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93317333ea4630478b8fd810f552c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempsVie: 120
+--- !u!114 &8656728259614354555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478004500585974404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a43e8d22f1d64083af68b4f5afaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSupprime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4783529898591471532}
+        m_TargetAssemblyTypeName: ParentSupprimeCascade, Assembly-CSharp
+        m_MethodName: GererSuppression
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
