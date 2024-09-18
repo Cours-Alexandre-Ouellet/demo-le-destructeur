@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -28,18 +29,70 @@ public class Roomba : MonoBehaviour
     /// </summary>
     private bool modeRassagePot;
 
+    /// <summary>
+    /// Nombre de pots qui ont été cassés depuis le début du jeu
+    /// </summary>
+    private int nombrePotsCasses;
+
+    /// <summary>
+    /// Mode dans lequel la roomba est agressive
+    /// </summary>
+    private bool modeAgressif;
+
+    /// <summary>
+    /// Liste de matériaux utilisés dans la roomba agressive
+    /// </summary>
+    [SerializeField]
+    private Material[] materiauxAgressif;
+
+    /// <summary>
+    /// Liste de materiaux utilisés dans la roomba normale
+    /// </summary>
+    private Material[] materiauxNormal;
+
+    /// <summary>
+    /// Couteau à droite de la roomba
+    /// </summary>
+    [SerializeField]
+    private GameObject couteauDroit;
+
+    /// <summary>
+    /// Couteau à gauche de la roomba
+    /// </summary>
+    [SerializeField]
+    private GameObject couteauGauche;
+
+    /// <summary>
+    /// TRex qui se déplace dans le jeu
+    /// </summary>
+    [SerializeField]
+    private ControleurTRex trex;
+
+    /// <summary>
+    /// Temps pour lequel l'agressivité se déroule
+    /// </summary>
+    [SerializeField]
+    private float tempsAgressivite;
+
+    /// <summary>
+    /// Temps de rafraichissement du chemin cible pour 
+    /// que la roomba cible le TRex.
+    /// </summary>
+    [SerializeField]
+    private float tempsRafraichissementPoursuite;
+
     private void Awake()
     {
         morceauxCasses = new();
         modeRassagePot = false;
+        nombrePotsCasses = 0;
+        modeAgressif = false;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        materiauxNormal = GetComponent<MeshRenderer>().materials;
     }
 
     /// <summary>
@@ -48,12 +101,20 @@ public class Roomba : MonoBehaviour
     /// <param name="morceaux">La liste des morceaux à ramasser.</param>
     public void RamasserMorceaux(Transform[] morceaux)
     {
+        nombrePotsCasses++;
+
         foreach(Transform morceau in morceaux)
         {
             morceauxCasses.Enqueue(morceau);
         }
         
-        if(!modeRassagePot)
+        // Condition pour rendre la roomba agressif
+        if(nombrePotsCasses % 2 == 0) 
+        {
+            modeAgressif = true;
+            TransformerEnAgressive();
+        }
+        else if(!modeRassagePot && !modeAgressif)
         {
             AffecterDestination();
         }
@@ -82,8 +143,14 @@ public class Roomba : MonoBehaviour
     /// </summary>
     private void AffecterDestination()
     {
+        if(modeAgressif)
+        {
+            destination = trex.transform.position;
+            StartCoroutine(GererModeAggressif());
+        }
+
         // Il y a des morceaux à ramasser
-        if(morceauxCasses.TryDequeue(out Transform morceau))
+        else if(morceauxCasses.TryDequeue(out Transform morceau))
         {
             modeRassagePot = true; 
 
@@ -159,5 +226,62 @@ public class Roomba : MonoBehaviour
                 AffecterDestination();
             }
         }
+    }
+
+    /// <summary>
+    /// Permet de gérer le temps dans le mode agressif. Si le mode expire, alors 
+    /// la coroutine s'arrête.
+    /// </summary>
+    /// <returns>L'énumérateur de la coroutine.</returns>
+    private IEnumerator GererModeAggressif()
+    {
+        float tempsEnModeAgressif = 0.0f;
+        float tempsMiseAJourChemin = 0.0f;
+
+        // Attend le temps d'agressivité
+        while(tempsEnModeAgressif < tempsAgressivite)
+        {
+            tempsEnModeAgressif += Time.deltaTime;
+            tempsMiseAJourChemin += Time.deltaTime;
+
+            // Permet de courir après le dinosaure
+            if(tempsMiseAJourChemin > tempsRafraichissementPoursuite)
+            {
+                agent.destination = trex.transform.position;
+                tempsMiseAJourChemin = 0.0f;
+            }
+
+            // Attend la prochaine frame avant de continuer l'exécution de la boucle de jeu
+            yield return null;
+        }
+
+        modeAgressif = false;
+        TransformerEnNormale();
+    }
+
+    /// <summary>
+    /// Change la façon d'afficher la roomba pour afficher les couteaux et afficher la 
+    /// lumière agressive.
+    /// </summary>
+    private void TransformerEnAgressive()
+    {
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.materials = materiauxAgressif;
+
+        couteauDroit.SetActive(true);
+        couteauGauche.SetActive(true);
+    }
+
+    /// <summary>
+    /// Change la façon d'afficher la roomba pour masquer les couteaux et afficher la 
+    /// lumière normale.
+    /// </summary>
+    private void TransformerEnNormale()
+    {
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.materials = materiauxNormal;
+
+        couteauDroit.SetActive(false);
+        couteauGauche.SetActive(false);
     }
 }

@@ -16,7 +16,7 @@ public class ParentSupprimeCascade : MonoBehaviour
         // En raison du séquençage des opérations, s'il reste un 
         // enfant, alors c'est que le dernier est entrain d'être supprimé
         // et qu'il faut détruire l'objet.
-        if (transform.childCount < 2    )
+        if (transform.childCount < 2)
         {
             Destroy(gameObject);
         }

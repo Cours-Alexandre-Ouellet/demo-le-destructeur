@@ -18,6 +18,6 @@ public class EnfantSupprime : MonoBehaviour
     /// </summary>
     public void OnDestroy()
     {
-        onSupprime.Invoke(gameObject);
+        onSupprime?.Invoke(gameObject);
     }
 }
