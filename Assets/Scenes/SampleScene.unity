@@ -334,7 +334,7 @@ PrefabInstance:
     - target: {fileID: 1766974657802718351, guid: e32c3e26b16e68946a1c1c7eaec9e628, type: 3}
       propertyPath: trex
       value: 
-      objectReference: {fileID: 2088567391}
+      objectReference: {fileID: 0}
     - target: {fileID: 1773622742702137640, guid: e32c3e26b16e68946a1c1c7eaec9e628, type: 3}
       propertyPath: m_Name
       value: Roomba
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2088567391}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ControleurTRex, Assembly-CSharp
         m_MethodName: Deplacer
         m_Mode: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Sprint[/Keyboard/leftShift]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2088567391}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ControleurTRex, Assembly-CSharp
         m_MethodName: Rotater
         m_Mode: 0
@@ -707,11 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9544698d5c446624a9f728c2feb204d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1737793063 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5805145384792301523, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
-  m_PrefabInstance: {fileID: 2088567389}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823309497
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,10 +768,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 129607813622339571, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3470064675069828231, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.46
@@ -824,38 +815,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5805145384792301523, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2088567394}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
---- !u!114 &2088567391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6639974570394958665, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
-  m_PrefabInstance: {fileID: 2088567389}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737793063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47080f47b838b9a4fbb82f8097b35a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!208 &2088567394
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737793063}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.19, y: 1.6660001, z: 2.9110003}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.041, y: 1.542, z: -0.18800001}
-  m_TimeToStationary: 0.5
 --- !u!1 &2129408111
 GameObject:
   m_ObjectHideFlags: 0
