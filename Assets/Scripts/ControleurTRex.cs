@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 /// Controle les actions du TRex dans le jeu. Il lit les entrés de la personne joueuse et 
 /// les réalise dans le monde.
 /// </summary>
+[RequireComponent(typeof(Animator))]
 public class ControleurTRex : MonoBehaviour
 {
     /// <summary>
@@ -30,12 +31,40 @@ public class ControleurTRex : MonoBehaviour
     private float rotation;
 
     /// <summary>
+    /// Référence pour le contrôle de l'animation
+    /// </summary>
+    private Animator controleurAnimation;
+
+    /// <summary>
+    /// Référence sur le rigidbody de l'objet
+    /// </summary>
+    private Rigidbody rigidbody;
+
+    private void Start()
+    {
+        controleurAnimation = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    /// <summary>
     /// Méthode qui reçoit les messages de déplacement du InputSystem.
     /// </summary>
     /// <param name="valeur">La valeur entrée entrée du déplacement sur deux axes.</param>
     public void Deplacer(InputAction.CallbackContext contexte)
     {
         deplacement = contexte.action.ReadValue<Vector2>();
+
+        // À la première frame on change l'animation pour courir
+        if(contexte.started)
+        {
+            controleurAnimation.SetBool("EnDeplacement", true);
+        }
+
+        // À la dernière frame on change l'animation pour immobile
+        if(contexte.canceled)
+        {
+            controleurAnimation.SetBool("EnDeplacement", false);
+        }
     }
 
     /// <summary>
@@ -58,10 +87,12 @@ public class ControleurTRex : MonoBehaviour
         {
             // Déplacement dans le plan XZ
             Vector3 deplacementEffectif = (deplacement.y * transform.forward + deplacement.x * transform.right).normalized;
-            transform.position += deplacementEffectif * vitesse * Time.deltaTime;
+            rigidbody.position += deplacementEffectif * vitesse * Time.deltaTime;
 
             // Rotation autour de l'axe des Y
-            transform.Rotate(Vector3.up, rotation * vitesseRotation * Time.deltaTime);
+            rigidbody.rotation = rigidbody.rotation *
+                Quaternion.AngleAxis(rotation * vitesseRotation * Time.deltaTime, Vector3.up);
+                
         }
        
     }
