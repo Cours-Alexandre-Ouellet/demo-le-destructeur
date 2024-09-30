@@ -47,6 +47,11 @@ public class PotFleur : MonoBehaviour
     /// <param name="collision">Données sur la collision</param>
     public void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.CompareTag("SupportPot"))
+        {
+            return;
+        }
+
         // Force reçue par le pot
         Vector3 impulsion = 0.1f * collision.impulse;       // 0.1f pour diviser la force par 10 (nombre de morceaux)
 

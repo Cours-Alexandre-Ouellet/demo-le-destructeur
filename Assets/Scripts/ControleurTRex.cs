@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -49,7 +50,7 @@ public class ControleurTRex : MonoBehaviour
     /// <summary>
     /// Méthode qui reçoit les messages de déplacement du InputSystem.
     /// </summary>
-    /// <param name="valeur">La valeur entrée entrée du déplacement sur deux axes.</param>
+    /// <param name="contexte">Le contexte de réalisation de l'action.</param>
     public void Deplacer(InputAction.CallbackContext contexte)
     {
         deplacement = contexte.action.ReadValue<Vector2>();
@@ -70,10 +71,50 @@ public class ControleurTRex : MonoBehaviour
     /// <summary>
     /// Méthode qui reçoit les messages de rotation du InputSystem.
     /// </summary>
-    /// <param name="valeur">La valeur entrée entrée du déplacement sur un axe.</param>
+    /// <param name="contexte">Le contexte de réalisation de l'action.</param>
     public void Rotater(InputAction.CallbackContext contexte)
     {
         rotation = contexte.action.ReadValue<float>();
+    }
+
+    /// <summary>
+    /// Action de rugir férocement
+    /// </summary>
+    /// <param name="contexte">Le contexte de réalisation de l'action.</param>
+    public void Rugir(InputAction.CallbackContext contexte)
+    {
+        if(contexte.started)
+        {
+            controleurAnimation.SetTrigger("Rugir");
+            controleurAnimation.SetBool("EnDeplacement", false);
+            StartCoroutine(EffetRugissement());
+        }
+    }
+
+    /// <summary>
+    /// Exécute les effets du rugissement du dinosaure
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator EffetRugissement()
+    {
+        // Attends 3 secondes avant d'exécuter une action
+        yield return new WaitForSeconds(3.0f);
+
+        // Projete une boîte pour vérifier les collisions
+        aFrappe = Physics.BoxCast(
+            transform.rotation * origineBoxcast + transform.position,
+            tailleBoxcast,
+            directionBoxcast,
+            out potFrappe,
+            Quaternion.Euler(angleBoxcast),
+            distanceBoxcast,
+            LayerMask.GetMask("PotFleur"));
+
+        if(aFrappe)
+        {
+            potFrappe.rigidbody.AddForce(10.0f * transform.forward);
+        }
+
     }
 
     /// <summary>
@@ -83,7 +124,8 @@ public class ControleurTRex : MonoBehaviour
     private void FixedUpdate()
     {
         // Si un déplacement a lieu (norme plus grande que 0)
-        if (deplacement.sqrMagnitude > 0)
+        if(deplacement.sqrMagnitude > 0 &&
+            !controleurAnimation.GetCurrentAnimatorStateInfo(0).IsName("TRex_Rugir"))
         {
             // Déplacement dans le plan XZ
             Vector3 deplacementEffectif = (deplacement.y * transform.forward + deplacement.x * transform.right).normalized;
@@ -92,8 +134,51 @@ public class ControleurTRex : MonoBehaviour
             // Rotation autour de l'axe des Y
             rigidbody.rotation = rigidbody.rotation *
                 Quaternion.AngleAxis(rotation * vitesseRotation * Time.deltaTime, Vector3.up);
-                
+
+            aFrappe = false;
         }
-       
     }
+
+    private bool aFrappe;
+
+    private RaycastHit potFrappe;
+
+    [Header("Boxcast du rugissement")]
+    [SerializeField]
+    private Vector3 origineBoxcast = new Vector3(0, 1.6f, 2.6f);
+
+    [SerializeField]
+    private Vector3 directionBoxcast = new Vector3(0.0f, -.43f, 0.82f);
+
+    [SerializeField]
+    private Vector3 angleBoxcast = new Vector3(35.0f, 0.0f, 0.0f);
+
+    [SerializeField]
+    private Vector3 tailleBoxcast = new Vector3(.25f, .275f, .25f);
+
+    [SerializeField]
+    private float distanceBoxcast = 5.0f;
+
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = aFrappe ? Color.green: Color.red;
+        float distanceFrappe = aFrappe ? potFrappe.distance : distanceBoxcast;
+
+        Vector3 pointDepartRayon = transform.rotation * origineBoxcast + transform.position;
+        Vector3 pointFinRayon = directionBoxcast.normalized * distanceFrappe;
+
+        Vector3 origineCube = transform.rotation * origineBoxcast + transform.position +
+            directionBoxcast.normalized * distanceFrappe;
+            
+
+        //Dessine un rayon sur la trajectoire du boxcast
+        Gizmos.DrawRay(pointDepartRayon, pointFinRayon);
+
+        //Dessine un cube à la fin du boxcast
+        Gizmos.DrawWireCube(origineCube, tailleBoxcast * 2.0f);
+
+
+    }
+
 }
