@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 /// <summary>
 /// Contrôle les déplacements automatiques de la Roomba vers les débris
@@ -9,6 +10,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]        // Oblige le GameObject à avoir un NavMeshAgent
 public class Roomba : MonoBehaviour
 {
+    /// <summary>
+    /// Événement lorsque la roomba change d'état
+    /// </summary>
+    public UnityEvent<bool> onChangementComportement;
+
     /// <summary>
     /// Liste des morceaux à ramasser
     /// </summary>
@@ -270,6 +276,9 @@ public class Roomba : MonoBehaviour
 
         couteauDroit.SetActive(true);
         couteauGauche.SetActive(true);
+
+        // Déclenche la réaction au mode agressif
+        onChangementComportement?.Invoke(true);
     }
 
     /// <summary>
@@ -283,5 +292,8 @@ public class Roomba : MonoBehaviour
 
         couteauDroit.SetActive(false);
         couteauGauche.SetActive(false);
+
+        // Déclenche la réaction au mode agressif
+        onChangementComportement?.Invoke(false);
     }
 }
