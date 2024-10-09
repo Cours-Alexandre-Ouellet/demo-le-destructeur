@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 227609239531490533}
   - component: {fileID: 9142296290867422051}
   - component: {fileID: -5102053941194053638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MurFenetre
   m_TagString: Untagged
   m_Icon: {fileID: 0}

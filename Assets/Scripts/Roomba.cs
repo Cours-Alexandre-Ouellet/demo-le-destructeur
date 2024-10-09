@@ -182,38 +182,6 @@ public class Roomba : MonoBehaviour
         agent.destination = destination;        
     }
 
-    // Version itérative
-    /// <summary>
-    /// Affecte la destination de la roomba selon la présence ou non de morceaux à ramasser
-    /// </summary>
-    /*private void AffecterDestination()
-    {
-        // Il y a des morceaux à ramasser
-        while(morceauxCasses.TryDequeue(out Transform morceau))
-        {
-            modeRassagePot = true;
-
-            // Le morceau a déjà été supprimé, donc on relance la méthode
-            if(morceau == null)
-            {
-                continue;
-            }
-
-            // La destination est valide, on l'affecte
-            destination = morceau.position;
-        }
-        
-        // Tous les morceaux sont ramassés
-        if(morceauxCasses.Count == 0) { 
-            // La destination est mise à jour
-            destination = GenererDestinationAlea();
-        }
-
-        // Déclenche le calcul d'un nouveau chemin
-        agent.destination = destination;
-    }*/
-
-
     /// <summary>
     /// Mise à jour de la Roomba
     /// </summary>
@@ -279,6 +247,9 @@ public class Roomba : MonoBehaviour
 
         // Déclenche la réaction au mode agressif
         onChangementComportement?.Invoke(true);
+
+        // Rafraîchissement du chemin
+        AffecterDestination();
     }
 
     /// <summary>
@@ -295,5 +266,8 @@ public class Roomba : MonoBehaviour
 
         // Déclenche la réaction au mode agressif
         onChangementComportement?.Invoke(false);
+
+        // Recalcule immédiatement la destination
+        AffecterDestination();
     }
 }
