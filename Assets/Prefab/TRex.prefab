@@ -515,6 +515,7 @@ GameObject:
   - component: {fileID: 6639974570394958665}
   - component: {fileID: 2395860424614312840}
   - component: {fileID: 2731639916983088144}
+  - component: {fileID: 8844175921753022192}
   m_Layer: 0
   m_Name: TRex
   m_TagString: Untagged
@@ -623,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47080f47b838b9a4fbb82f8097b35a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesse: 3
+  vitesse: 1.5
   vitesseRotation: 30
 --- !u!208 &2395860424614312840
 NavMeshObstacle:
@@ -651,7 +652,7 @@ Animator:
   m_GameObject: {fileID: 5805145384792301523}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 297863d5fdbc1c74d863e75d532cf2ce, type: 2}
+  m_Controller: {fileID: 9100000, guid: 453e969b5e1d4fa42acba947740f2b6d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -663,6 +664,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &8844175921753022192
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805145384792301523}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 100
+  m_AngularDrag: 100
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &5975756480765572486
 GameObject:
   m_ObjectHideFlags: 0

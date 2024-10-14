@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 /// Controle les actions du TRex dans le jeu. Il lit les entrés de la personne joueuse et 
 /// les réalise dans le monde.
 /// </summary>
+[RequireComponent(typeof(Animator))]
 public class ControleurTRex : MonoBehaviour
 {
     /// <summary>
@@ -29,6 +30,15 @@ public class ControleurTRex : MonoBehaviour
     /// </summary>
     private float rotation;
 
+    private Animator controleurAnimation;
+    private Rigidbody rigidbody;
+
+    private void Start()
+    {
+        controleurAnimation = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
     /// <summary>
     /// Méthode qui reçoit les messages de déplacement du InputSystem.
     /// </summary>
@@ -36,6 +46,15 @@ public class ControleurTRex : MonoBehaviour
     public void Deplacer(InputAction.CallbackContext contexte)
     {
         deplacement = contexte.action.ReadValue<Vector2>();
+
+        if(contexte.started)
+        {
+            controleurAnimation.SetBool("Deplacement", true);
+        }
+        else if(contexte.canceled)
+        {
+            controleurAnimation.SetBool("Deplacement", false);
+        }
     }
 
     /// <summary>
@@ -58,10 +77,10 @@ public class ControleurTRex : MonoBehaviour
         {
             // Déplacement dans le plan XZ
             Vector3 deplacementEffectif = (deplacement.y * transform.forward + deplacement.x * transform.right).normalized;
-            transform.position += deplacementEffectif * vitesse * Time.deltaTime;
+            rigidbody.position += deplacementEffectif * vitesse * Time.deltaTime;
 
             // Rotation autour de l'axe des Y
-            transform.Rotate(Vector3.up, rotation * vitesseRotation * Time.deltaTime);
+            rigidbody.rotation *= Quaternion.AngleAxis(rotation * vitesseRotation * Time.deltaTime, Vector3.up);
         }
        
     }
