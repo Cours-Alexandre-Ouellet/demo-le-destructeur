@@ -35,18 +35,27 @@ public class MurTransparent : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        RaycastHit[] structuresFrappees = Physics.RaycastAll(transform.position,
-            tRex.transform.position - transform.position, 
-            Mathf.Infinity, 
+        RaycastHit[] structuresFrappees = new RaycastHit[100];
+
+        Vector3 direction = tRex.transform.position - transform.position;
+
+        int nombreStructuresFrappes = Physics.BoxCastNonAlloc(transform.position,
+            new Vector3(1.0f, 1.0f, 1.0f),
+            direction.normalized,
+            structuresFrappees,
+            Quaternion.identity,
+            direction.magnitude, 
             ~LayerMask.NameToLayer("Structure"));
-        Debug.Log("Structure : " + structuresFrappees.Length);
+        Debug.Log("Structure : " + nombreStructuresFrappes);
+
         List<GameObject> aAjouter = new List<GameObject>();
         List<GameObject> aRetirer = new List<GameObject>();
 
 
         bool[] structuresTransparentesVisitees = new bool[structuresTransparentes.Count];     // Par défaut les booléens sont faux
-        foreach(RaycastHit structureFrappee in structuresFrappees)
+        for(int i = 0; i < nombreStructuresFrappes; i++)
         {
+            RaycastHit structureFrappee = structuresFrappees[i];
             GameObject gameObjectFrappe = structureFrappee.transform.gameObject;
 
             // Le GO est frappé, s'il est déjà visité on le marque tel quel, sinon on l'ajoute à la liste

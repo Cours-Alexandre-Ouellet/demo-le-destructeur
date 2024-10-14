@@ -515,12 +515,8 @@ GameObject:
   - component: {fileID: 6639974570394958665}
   - component: {fileID: 2395860424614312840}
   - component: {fileID: 2731639916983088144}
-<<<<<<< HEAD
-  - component: {fileID: 8844175921753022192}
-=======
   - component: {fileID: 5132781801027752867}
   - component: {fileID: 1329794733801864475}
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
   m_Layer: 0
   m_Name: TRex
   m_TagString: SupportPot
@@ -629,7 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47080f47b838b9a4fbb82f8097b35a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesse: 1.5
+  vitesse: 3
   vitesseRotation: 30
   origineBoxcast: {x: 0, y: 1.6, z: 2.6}
   directionBoxcast: {x: 0, y: -0.1, z: 0.82}
@@ -663,11 +659,7 @@ Animator:
   m_GameObject: {fileID: 5805145384792301523}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-<<<<<<< HEAD
-  m_Controller: {fileID: 9100000, guid: 453e969b5e1d4fa42acba947740f2b6d, type: 2}
-=======
   m_Controller: {fileID: 9100000, guid: 37e78cf26272dd64c9a55c5b4f645f08, type: 2}
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -679,11 +671,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
-<<<<<<< HEAD
---- !u!54 &8844175921753022192
-=======
 --- !u!54 &5132781801027752867
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -691,15 +679,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5805145384792301523}
   serializedVersion: 4
-<<<<<<< HEAD
-  m_Mass: 1000
-  m_Drag: 100
-  m_AngularDrag: 100
-=======
   m_Mass: 3000
   m_Drag: 1
   m_AngularDrag: 1
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -714,10 +696,6 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-<<<<<<< HEAD
-  m_Constraints: 84
-  m_CollisionDetection: 0
-=======
   m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!82 &1329794733801864475
@@ -817,7 +795,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
 --- !u!1 &5975756480765572486
 GameObject:
   m_ObjectHideFlags: 0

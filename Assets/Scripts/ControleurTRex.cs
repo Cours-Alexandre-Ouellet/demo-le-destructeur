@@ -3,18 +3,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Controle les actions du TRex dans le jeu. Il lit les entrés de la personne joueuse et 
-/// les réalise dans le monde.
+/// Controle les actions du TRex dans le jeu. Il lit les entrï¿½s de la personne joueuse et 
+/// les rï¿½alise dans le monde.
 /// </summary>
-<<<<<<< HEAD
-[RequireComponent(typeof(Animator))]
-=======
 [RequireComponent(typeof(Animator)), RequireComponent(typeof(AudioSource))]
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
 public class ControleurTRex : MonoBehaviour
 {
     /// <summary>
-    /// Vitesse de déplacement du T-Rex.
+    /// Vitesse de dï¿½placement du T-Rex.
     /// </summary>
     [SerializeField]
     private float vitesse;
@@ -26,7 +22,7 @@ public class ControleurTRex : MonoBehaviour
     private float vitesseRotation;
 
     /// <summary>
-    /// Variable interne du déplacement de la frame
+    /// Variable interne du dï¿½placement de la frame
     /// </summary>
     private Vector2 deplacement;
 
@@ -35,27 +31,18 @@ public class ControleurTRex : MonoBehaviour
     /// </summary>
     private float rotation;
 
-    private Animator controleurAnimation;
-    private Rigidbody rigidbody;
-
-    private void Start()
-    {
-        controleurAnimation = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody>();
-    }
-
     /// <summary>
-    /// Référence pour le contrôle de l'animation
+    /// Rï¿½fï¿½rence pour le contrï¿½le de l'animation
     /// </summary>
     private Animator controleurAnimation;
 
     /// <summary>
-    /// Référence sur le rigidbody de l'objet
+    /// Rï¿½fï¿½rence sur le rigidbody de l'objet
     /// </summary>
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     /// <summary>
-    /// Référence sur le composante Audio
+    /// Rï¿½fï¿½rence sur le composante Audio
     /// </summary>
     private AudioSource sourceAudio;
 
@@ -64,22 +51,21 @@ public class ControleurTRex : MonoBehaviour
     private Vector3 origineBoxcast = new Vector3(0, 1.6f, 2.6f);
 
     /// <summary>
-    /// Direction de la projection du boxcollider. Dépend de l'angle du boxcollider.
+    /// Direction de la projection du boxcollider. Dï¿½pend de l'angle du boxcollider.
     /// </summary>
     private Vector3 directionBoxcast;
 
     [SerializeField, Tooltip("Angle de projection autour de l'axe des X.")]
     private float angleBoxcast = 35.0f;
 
-    [SerializeField, Tooltip("Taille de la boîte de projection.")]
+    [SerializeField, Tooltip("Taille de la boï¿½te de projection.")]
     private Vector3 tailleBoxcast = new Vector3(.25f, .275f, .25f);
 
-    [SerializeField, Tooltip("Distance sur laquelle la boîte est projetée.")]
+    [SerializeField, Tooltip("Distance sur laquelle la boï¿½te est projetï¿½e.")]
     private float distanceBoxcast = 5.0f;
 
     [SerializeField, Tooltip("Force de projection des objets.")]
     private float forceRugissement = 100.0f;
-
 
     private void Start()
     {
@@ -91,49 +77,39 @@ public class ControleurTRex : MonoBehaviour
     }
 
     /// <summary>
-    /// Méthode qui reçoit les messages de déplacement du InputSystem.
+    /// Mï¿½thode qui reï¿½oit les messages de dï¿½placement du InputSystem.
     /// </summary>
-    /// <param name="contexte">Le contexte de réalisation de l'action.</param>
+    /// <param name="contexte">Le contexte de rï¿½alisation de l'action.</param>
     public void Deplacer(InputAction.CallbackContext contexte)
     {
         deplacement = contexte.action.ReadValue<Vector2>();
 
-<<<<<<< HEAD
-        if(contexte.started)
-        {
-            controleurAnimation.SetBool("Deplacement", true);
-        }
-        else if(contexte.canceled)
-        {
-            controleurAnimation.SetBool("Deplacement", false);
-=======
-        // À la première frame on change l'animation pour courir
+        // ï¿½ la premiï¿½re frame on change l'animation pour courir
         if(contexte.started)
         {
             controleurAnimation.SetBool("EnDeplacement", true);
         }
 
-        // À la dernière frame on change l'animation pour immobile
+        // ï¿½ la derniï¿½re frame on change l'animation pour immobile
         if(contexte.canceled)
         {
             controleurAnimation.SetBool("EnDeplacement", false);
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
         }
     }
 
     /// <summary>
-    /// Méthode qui reçoit les messages de rotation du InputSystem.
+    /// Mï¿½thode qui reï¿½oit les messages de rotation du InputSystem.
     /// </summary>
-    /// <param name="contexte">Le contexte de réalisation de l'action.</param>
+    /// <param name="contexte">Le contexte de rï¿½alisation de l'action.</param>
     public void Rotater(InputAction.CallbackContext contexte)
     {
         rotation = contexte.action.ReadValue<float>();
     }
 
     /// <summary>
-    /// Action de rugir férocement
+    /// Action de rugir fï¿½rocement
     /// </summary>
-    /// <param name="contexte">Le contexte de réalisation de l'action.</param>
+    /// <param name="contexte">Le contexte de rï¿½alisation de l'action.</param>
     public void Rugir(InputAction.CallbackContext contexte)
     {
         if(contexte.started)
@@ -151,15 +127,15 @@ public class ControleurTRex : MonoBehaviour
     }
 
     /// <summary>
-    /// Exécute les effets du rugissement du dinosaure
+    /// Exï¿½cute les effets du rugissement du dinosaure
     /// </summary>
     /// <returns></returns>
     private IEnumerator EffetRugissement()
     {
-        // Attends 3 secondes avant d'exécuter une action
+        // Attends 3 secondes avant d'exï¿½cuter une action
         yield return new WaitForSeconds(3.0f);
 
-        // Projete une boîte pour vérifier les collisions
+        // Projete une boï¿½te pour vï¿½rifier les collisions
         aFrappe = Physics.BoxCast(
             transform.rotation * origineBoxcast + transform.position,
             tailleBoxcast,
@@ -179,28 +155,24 @@ public class ControleurTRex : MonoBehaviour
     
 
     /// <summary>
-    /// Cette méthode s'exécute une fois par frame et est utile pour les déplacements ayant une incidence sur la
+    /// Cette mï¿½thode s'exï¿½cute une fois par frame et est utile pour les dï¿½placements ayant une incidence sur la
     /// physique du jeu.
     /// </summary>
     private void FixedUpdate()
     {
-        // Si un déplacement a lieu (norme plus grande que 0)
+        // Si un dï¿½placement a lieu (norme plus grande que 0)
         if(deplacement.sqrMagnitude > 0 &&
             !controleurAnimation.GetCurrentAnimatorStateInfo(0).IsName("TRex_Rugir"))
         {
-            // Déplacement dans le plan XZ
+            // Dï¿½placement dans le plan XZ
             Vector3 deplacementEffectif = (deplacement.y * transform.forward + deplacement.x * transform.right).normalized;
             rigidbody.position += deplacementEffectif * vitesse * Time.deltaTime;
 
             // Rotation autour de l'axe des Y
-<<<<<<< HEAD
-            rigidbody.rotation *= Quaternion.AngleAxis(rotation * vitesseRotation * Time.deltaTime, Vector3.up);
-=======
             rigidbody.rotation = rigidbody.rotation *
                 Quaternion.AngleAxis(rotation * vitesseRotation * Time.deltaTime, Vector3.up);
 
             aFrappe = false;
->>>>>>> b8b2212540d82617ecef695dd564539bfea69a62
         }
     }
 
@@ -225,7 +197,7 @@ public class ControleurTRex : MonoBehaviour
         //Dessine un rayon sur la trajectoire du boxcast
         Gizmos.DrawRay(pointDepartRayon, pointFinRayon);
 
-        //Dessine un cube à la fin du boxcast
+        //Dessine un cube ï¿½ la fin du boxcast
         Gizmos.DrawWireCube(origineCube, tailleBoxcast * 2.0f);
 
 
