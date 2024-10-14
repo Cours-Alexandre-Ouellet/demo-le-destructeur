@@ -690,18 +690,6 @@ PrefabInstance:
       propertyPath: roomba
       value: 
       objectReference: {fileID: 817793060}
-    - target: {fileID: 1404644475387982077, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404644475387982077, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404644475387982077, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2738363749167119067, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -750,14 +738,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salles
       objectReference: {fileID: 0}
-    - target: {fileID: 5815161842835661216, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815161842835661216, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6138402255131641235, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
       propertyPath: roomba
       value: 
@@ -765,15 +745,7 @@ PrefabInstance:
     - target: {fileID: 6357545451557282029, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: e6399293e66c94440837b9e52f45c1b1, type: 2}
-    - target: {fileID: 7083402691589222867, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 7083402691589222867, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.59
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 23800000, guid: ba4b0a5dc1cdeea48856c086c9d02fe2, type: 2}
     - target: {fileID: 7480808289912788448, guid: 0f9f41b83a62f4d4388a8b6468d95c12, type: 3}
       propertyPath: roomba
       value: 
