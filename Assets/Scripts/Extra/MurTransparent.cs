@@ -45,12 +45,10 @@ public class MurTransparent : MonoBehaviour
             structuresFrappees,
             Quaternion.identity,
             direction.magnitude, 
-            ~LayerMask.NameToLayer("Structure"));
-        Debug.Log("Structure : " + nombreStructuresFrappes);
+            LayerMask.GetMask("Structure"));
 
         List<GameObject> aAjouter = new List<GameObject>();
         List<GameObject> aRetirer = new List<GameObject>();
-
 
         bool[] structuresTransparentesVisitees = new bool[structuresTransparentes.Count];     // Par défaut les booléens sont faux
         for(int i = 0; i < nombreStructuresFrappes; i++)

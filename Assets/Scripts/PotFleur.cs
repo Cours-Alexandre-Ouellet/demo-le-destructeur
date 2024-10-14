@@ -93,7 +93,7 @@ public class PotFleur : MonoBehaviour
     /// <param name="emplacement"></param>
     public void SetEmplacement(EmplacementPot emplacement)
     {
-        transform.position = emplacement.transform.position;
+        transform.position = emplacement.PositionGeneration;
         Emplacement = emplacement;
     }
 

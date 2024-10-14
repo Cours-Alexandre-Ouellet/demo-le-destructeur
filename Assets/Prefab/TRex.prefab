@@ -626,10 +626,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vitesse: 3
-  vitesseRotation: 30
+  vitesseRotation: 45
   origineBoxcast: {x: 0, y: 1.6, z: 2.6}
-  directionBoxcast: {x: 0, y: -0.1, z: 0.82}
-  angleBoxcast: {x: 25, y: 0, z: 0}
+  angleBoxcast: 35
   tailleBoxcast: {x: 0.25, y: 0.275, z: 0.25}
   distanceBoxcast: 5
   forceRugissement: 20
@@ -643,10 +642,10 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.8, y: 1.5, z: 2.5}
+  m_Extents: {x: 0.05, y: 1.5, z: 0.05}
   m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 1.5, z: 0}
   m_TimeToStationary: 0.5
 --- !u!95 &2731639916983088144
@@ -1261,6 +1260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3234976976335653453}
   - component: {fileID: 3618382702365580291}
+  - component: {fileID: 8991598359669507390}
   - component: {fileID: 1736089002655427922}
   - component: {fileID: 7430837384735863007}
   - component: {fileID: 1953265867878839932}
@@ -1280,13 +1280,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8348364263271679044}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21263108, y: -0.67437977, z: 0.21263108, w: 0.67437977}
-  m_LocalPosition: {x: 6, y: 4, z: 0}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalPosition: {x: 0, y: 4, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3470064675069828231}
-  m_LocalEulerAnglesHint: {x: 35, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!20 &3618382702365580291
 Camera:
   m_ObjectHideFlags: 0
@@ -1338,6 +1338,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &8991598359669507390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348364263271679044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d35aa04bc1ab64e9c7eb27c51d3b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tRex: {fileID: 5805145384792301523}
 --- !u!81 &1736089002655427922
 AudioListener:
   m_ObjectHideFlags: 0

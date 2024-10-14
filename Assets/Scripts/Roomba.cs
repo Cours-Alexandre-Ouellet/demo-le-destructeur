@@ -87,12 +87,17 @@ public class Roomba : MonoBehaviour
     [SerializeField]
     private float tempsRafraichissementPoursuite;
 
+    private Coroutine gestionModeAgressif;
+
+    private float tempsEnModeAgressif;
+
     private void Awake()
     {
         morceauxCasses = new();
         modeRassagePot = false;
         nombrePotsCasses = 0;
         modeAgressif = false;
+        gestionModeAgressif = null;
     }
 
     void Start()
@@ -114,8 +119,14 @@ public class Roomba : MonoBehaviour
             morceauxCasses.Enqueue(morceau);
         }
         
+        // Si elle est déjà agressive 
+        if(modeAgressif)
+        {
+            tempsEnModeAgressif = 0.0f;
+        }
+
         // Condition pour rendre la roomba agressif
-        if(nombrePotsCasses % 2 == 0) 
+        if(nombrePotsCasses % 2 == 0 && !modeAgressif) 
         {
             modeAgressif = true;
             TransformerEnAgressive();
@@ -152,7 +163,15 @@ public class Roomba : MonoBehaviour
         if(modeAgressif)
         {
             destination = trex.transform.position;
-            StartCoroutine(GererModeAggressif());
+
+            if (gestionModeAgressif == null)
+            {
+                gestionModeAgressif = StartCoroutine(GererModeAggressif());
+            }
+            else
+            {
+
+            }
         }
 
         // Il y a des morceaux à ramasser
@@ -209,7 +228,7 @@ public class Roomba : MonoBehaviour
     /// <returns>L'énumérateur de la coroutine.</returns>
     private IEnumerator GererModeAggressif()
     {
-        float tempsEnModeAgressif = 0.0f;
+        tempsEnModeAgressif = 0.0f;
         float tempsMiseAJourChemin = 0.0f;
 
         // Attend le temps d'agressivité
@@ -231,6 +250,7 @@ public class Roomba : MonoBehaviour
 
         modeAgressif = false;
         TransformerEnNormale();
+        gestionModeAgressif = null;
     }
 
     /// <summary>
