@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -46,6 +47,11 @@ public class ControleurTRex : MonoBehaviour
     /// </summary>
     private AudioSource sourceAudio;
 
+    [SerializeField]
+    private int nombreViesMaximales;
+
+    private int nombreVies;
+
     [Header("Boxcast du rugissement")]
     [SerializeField, Tooltip("Point d'origine locale du boxcollider.")]
     private Vector3 origineBoxcast = new Vector3(0, 1.6f, 2.6f);
@@ -67,6 +73,8 @@ public class ControleurTRex : MonoBehaviour
     [SerializeField, Tooltip("Force de projection des objets.")]
     private float forceRugissement = 100.0f;
 
+    public UnityEvent<int> perdreVie;
+
     private void Start()
     {
         controleurAnimation = GetComponent<Animator>();
@@ -74,6 +82,7 @@ public class ControleurTRex : MonoBehaviour
         float angleRad = (90 + angleBoxcast) * Mathf.Deg2Rad;
         directionBoxcast = new Vector3(0.0f, Mathf.Cos(angleRad), Mathf.Sin(angleRad));
         sourceAudio = GetComponent<AudioSource>();
+        nombreVies = nombreViesMaximales;
     }
 
     /// <summary>
@@ -112,6 +121,7 @@ public class ControleurTRex : MonoBehaviour
     /// <param name="contexte">Le contexte de r�alisation de l'action.</param>
     public void Rugir(InputAction.CallbackContext contexte)
     {
+        
         if(contexte.started)
         {
             // Animation 
@@ -126,12 +136,20 @@ public class ControleurTRex : MonoBehaviour
         }
     }
 
+    private void RetirerVie()
+    {
+        nombreVies--;
+        perdreVie?.Invoke(nombreVies);
+    }
+
     /// <summary>
     /// Ex�cute les effets du rugissement du dinosaure
     /// </summary>
     /// <returns></returns>
     private IEnumerator EffetRugissement()
     {
+        RetirerVie();
+
         // Attends 3 secondes avant d'ex�cuter une action
         yield return new WaitForSeconds(3.0f);
 

@@ -41,13 +41,22 @@ public class PotFleur : MonoBehaviour
     /// </summary>
     public EmplacementPot Emplacement {get; private set;}
 
+    private bool estCasse;
+
+    private void Awake()
+    {
+        estCasse = false;
+    }
+
     /// <summary>
     /// Appellée lorsque le pot entre en colision avec un autre objet
     /// </summary>
     /// <param name="collision">Données sur la collision</param>
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("SupportPot"))
+        // Vérifie que la collision n'a pas lieu avec un support et que le pot
+        // n'est pas déjà cassé. (évite d'appeler deux fois l'événement).
+        if(collision.gameObject.CompareTag("SupportPot") || estCasse)
         {
             return;
         }
@@ -76,6 +85,7 @@ public class PotFleur : MonoBehaviour
             morceauARamasser.Add(fleur.transform);
 
             OnCasser?.Invoke(morceauARamasser.ToArray());
+            estCasse = true;        // Met le pot dans l'état cassé
 
             // Liaison de l'événement de suppression
             EnfantSupprime potCasseSuppression =
