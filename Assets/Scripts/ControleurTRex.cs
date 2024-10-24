@@ -47,9 +47,20 @@ public class ControleurTRex : MonoBehaviour
     /// </summary>
     private AudioSource sourceAudio;
 
+    /// <summary>
+    /// Le nombre de vies maximales du TRex
+    /// </summary>
     [SerializeField]
     private int nombreViesMaximales;
 
+    /// <summary>
+    /// Permet d'accéder au nombre de vies maximales
+    /// </summary>
+    public int NombreViesMaximales => nombreViesMaximales;
+
+    /// <summary>
+    /// Le nombre de vies actuels du TRex.
+    /// </summary>
     private int nombreVies;
 
     [Header("Boxcast du rugissement")]
@@ -60,6 +71,17 @@ public class ControleurTRex : MonoBehaviour
     /// Direction de la projection du boxcollider. D�pend de l'angle du boxcollider.
     /// </summary>
     private Vector3 directionBoxcast;
+
+    /// <summary>
+    /// Indique si le BoxCast pour le rugissement a frappé un objet
+    /// </summary>
+    private bool aFrappe;
+
+    /// <summary>
+    /// Contient l'information sur le pot frappé
+    /// </summary>
+    private RaycastHit potFrappe;
+
 
     [SerializeField, Tooltip("Angle de projection autour de l'axe des X.")]
     private float angleBoxcast = 35.0f;
@@ -73,6 +95,9 @@ public class ControleurTRex : MonoBehaviour
     [SerializeField, Tooltip("Force de projection des objets.")]
     private float forceRugissement = 100.0f;
 
+    /// <summary>
+    /// Événement appelé lorsque le TRex perd une vie, le nombre de vies restantes est passé en paramètres.
+    /// </summary>
     public UnityEvent<int> perdreVie;
 
     private void Start()
@@ -136,6 +161,9 @@ public class ControleurTRex : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Retire une vie au TRex
+    /// </summary>
     private void RetirerVie()
     {
         nombreVies--;
@@ -170,8 +198,6 @@ public class ControleurTRex : MonoBehaviour
 
     }
 
-    
-
     /// <summary>
     /// Cette m�thode s'ex�cute une fois par frame et est utile pour les d�placements ayant une incidence sur la
     /// physique du jeu.
@@ -194,12 +220,6 @@ public class ControleurTRex : MonoBehaviour
         }
     }
 
-    private bool aFrappe;
-
-    private RaycastHit potFrappe;
-
-    
-
     void OnDrawGizmos()
     {
         Gizmos.color = aFrappe ? Color.green: Color.yellow;
@@ -215,10 +235,8 @@ public class ControleurTRex : MonoBehaviour
         //Dessine un rayon sur la trajectoire du boxcast
         Gizmos.DrawRay(pointDepartRayon, pointFinRayon);
 
-        //Dessine un cube � la fin du boxcast
+        //Dessine un cube à la fin du boxcast
         Gizmos.DrawWireCube(origineCube, tailleBoxcast * 2.0f);
-
-
     }
 
 }
