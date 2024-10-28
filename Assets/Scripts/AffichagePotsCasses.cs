@@ -50,6 +50,8 @@ public class AffichagePotsCasses : MonoBehaviour
     public void IncrementerPotsCasses(Transform[] morceauxCasses)    
     {
         nombrePotsCasses++;
-        etiquettePotsCasses.SetText($"{nombrePotsCasses}"); 
+        etiquettePotsCasses.SetText($"{nombrePotsCasses}");
+
+        transform.parent.GetComponent<Animator>().SetTrigger("PotCasse");
     }
 }
