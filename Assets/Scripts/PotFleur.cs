@@ -39,7 +39,7 @@ public class PotFleur : MonoBehaviour
     /// <summary>
     /// L'emplacement où il est créé.
     /// </summary>
-    public EmplacementPot Emplacement {get; private set;}
+    public EmplacementPot Emplacement { get; private set; }
 
     /// <summary>
     /// État du pot s'il est cassé
@@ -59,7 +59,7 @@ public class PotFleur : MonoBehaviour
     {
         // Vérifie que la collision n'a pas lieu avec un support et que le pot
         // n'est pas déjà cassé. (évite d'appeler deux fois l'événement).
-        if(collision.gameObject.CompareTag("SupportPot") || estCasse)
+        if (collision.gameObject.CompareTag("SupportPot") || estCasse)
         {
             return;
         }
@@ -72,9 +72,9 @@ public class PotFleur : MonoBehaviour
         {
             Destroy(potInitial);                // Retire le pot complet
             GameObject nouveauPot = Instantiate(potCasse, transform);      // Nouveau pot cassé
-            
+
             // Récupère le rigidbody de chaque morceau 
-            Rigidbody[] morceaux = nouveauPot.GetComponentsInChildren<Rigidbody>(); 
+            Rigidbody[] morceaux = nouveauPot.GetComponentsInChildren<Rigidbody>();
 
             foreach (Rigidbody rigidbodyMorceau in morceaux)
             {
@@ -83,8 +83,12 @@ public class PotFleur : MonoBehaviour
             }
 
             // Appelle l'événement pour indiquer qu'un pot a été cassé
-            List<Transform> morceauARamasser = 
-                new List<Transform>(nouveauPot.GetComponentsInChildren<Transform>());
+            List<Transform> morceauARamasser = new();
+            foreach (Transform morceau in transform)
+            {
+                morceauARamasser.Add(morceau);
+            }
+
             if (fleur != null)
             {
                 morceauARamasser.Add(fleur.transform);

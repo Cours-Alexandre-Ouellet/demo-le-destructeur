@@ -17,6 +17,11 @@ public class Morceau : MonoBehaviour
     private float tempsDepuisCreation;
 
     /// <summary>
+    /// Limite en y sous laquelle l'objet est détruit
+    /// </summary>
+    private float limiteInferieure = -20.0f;
+
+    /// <summary>
     /// Initialise les attributs interne de l'objet
     /// </summary>
     private void Awake()
@@ -29,6 +34,11 @@ public class Morceau : MonoBehaviour
     {
         // Temps de vie écoulé
         if(tempsDepuisCreation > tempsVie)
+        {
+            Destroy(gameObject);
+        }
+
+        if(transform.position.y < limiteInferieure)
         {
             Destroy(gameObject);
         }
