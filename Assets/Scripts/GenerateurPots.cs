@@ -150,8 +150,9 @@ public class GenerateurPots : MonoBehaviour
         PotFleur nouveauPot = Instantiate(prototypePot, transform);
         nouveauPot.SetEmplacement(emplacement);
 
-        // Lie l'événement à la roomba
+        // Lie l'événement à la roomba et au compteur dans l'interface
         nouveauPot.OnCasser.AddListener(roomba.RamasserMorceaux);
+        nouveauPot.OnCasser.AddListener(AffichagePotsCasses.Instance.IncrementerPotsCasses);
 
         // Met à jour l'emplacement
         emplacement.EstOccupe = true;
