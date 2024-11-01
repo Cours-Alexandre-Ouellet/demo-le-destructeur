@@ -48,6 +48,18 @@ public class ControleurTRex : MonoBehaviour
     private AudioSource sourceAudio;
 
     /// <summary>
+    /// Clip audio du rugissement du TRex
+    /// </summary>
+    [SerializeField]
+    private AudioClip clipRugissement;
+
+    /// <summary>
+    /// Clip audio des pas du TRex
+    /// </summary>
+    [SerializeField]
+    private AudioClip clipPas;
+
+    /// <summary>
     /// Le nombre de vies maximales du TRex
     /// </summary>
     [SerializeField]

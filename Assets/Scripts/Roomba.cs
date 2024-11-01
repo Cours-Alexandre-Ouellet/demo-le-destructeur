@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,22 +15,24 @@ public class Roomba : MonoBehaviour
     public UnityEvent<bool> onChangementComportement;
 
     /// <summary>
+    /// Événement lorsque le roomba ramasse un morceau
+    /// </summary>
+    public UnityEvent<Transform> onMorceauRamasse;
+
+    /// <summary>
     /// Liste des morceaux à ramasser
     /// </summary>
-    private Queue<Transform> morceauxCasses;
+    private LinkedList<Transform> morceauxCasses;
 
+    /// <summary>
+    /// Indique si le roomba a des morceaux non ramassés
+    /// </summary>
     public bool PossedeMorceauARamasser => morceauxCasses.Count > 0;
 
     /// <summary>
     /// Référence vers le component agent
     /// </summary>
     private NavMeshAgent agent;
-
-    /// <summary>
-    /// Nombre de pots qui ont été cassés depuis le début du jeu
-    /// </summary>
-    private int nombrePotsCasses;
-    public int NombrePotsCasses => nombrePotsCasses;
 
     /// <summary>
     /// Liste de matériaux utilisés dans la roomba agressive
@@ -62,8 +63,14 @@ public class Roomba : MonoBehaviour
     [SerializeField]
     private ControleurTRex trex;
 
+    /// <summary>
+    /// État actuel du Roomba.
+    /// </summary>
     private EtatRoomba etat;
 
+    /// <summary>
+    /// État du roomba à la frame précédente.
+    /// </summary>
     private EtatRoomba etatPrecedent;
 
     /// <summary>
@@ -71,10 +78,26 @@ public class Roomba : MonoBehaviour
     /// </summary>
     public Vector3? Destination { get; set; }
 
+    /// <summary>
+    /// Compte le nombre de pots cassés depuis le dernier mode agressif.
+    /// </summary>
+    public int NombrePotsCassesDepuisDernierAgressif { get; set; }
+
+    /// <summary>
+    /// Nombre de pots cassés à partir duquel le roomba vire agressif.
+    /// </summary>
+    [SerializeField]    
+    private int seuilAgressivite;
+
+    /// <summary>
+    /// Accesseur du nombre de pots cassés à partir duquel le roomba vire agressif.
+    /// </summary>
+    public int SeuilAgressivite => seuilAgressivite;
+
     private void Awake()
     {
         morceauxCasses = new();
-        nombrePotsCasses = 0;
+        NombrePotsCassesDepuisDernierAgressif = 0;
     }
 
     void Start()
@@ -101,25 +124,48 @@ public class Roomba : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Met à jour la destination du Roomba.
+    /// </summary>
+    /// <param name="destination">la position à atteindre pour le roomba.</param>
     public void DeplacerVers(Vector3 destination)
     {
         Destination = destination;
         agent.destination = destination;
     }
 
+    /// <summary>
+    /// Accesseur pour obtenir le prochain morceau à ramasser.
+    /// </summary>
+    /// <returns>La prochaine piece à ramasser</returns>
     public Transform GetProchainePiece()
     {
-        return morceauxCasses.Dequeue();
+        Transform prochainePiece = null;
+
+        while (prochainePiece == null && morceauxCasses.Count > 0)
+        {
+            prochainePiece = morceauxCasses.First.Value;
+            morceauxCasses.RemoveFirst();
+        }
+
+        return prochainePiece;
     }
 
-    public void RamasserMorceau(Transform morceau)
+    /// <summary>
+    /// Indique au Roomba qu'un morceau est à ramasser.
+    /// </summary>
+    /// <param name="morceau">Le morceau à ramasser</param>
+    /// <param name="enTete">Indique si le morceau doit être ajouté en-tête de la liste.</param>
+    public void RamasserMorceau(Transform morceau, bool enTete)
     {
-        morceauxCasses.Enqueue(morceau);
-    }
-
-    public void DeplacerVersTRex()
-    {
-        DeplacerVers(trex.transform.position);
+        if(enTete)
+        {
+            morceauxCasses.AddFirst(morceau);   
+        }
+        else
+        {
+            morceauxCasses.AddLast(morceau);
+        }
     }
 
     /// <summary>
@@ -128,18 +174,27 @@ public class Roomba : MonoBehaviour
     /// <param name="morceaux">La liste des morceaux à ramasser.</param>
     public void RamasserMorceaux(Transform[] morceaux)
     {
-        nombrePotsCasses++;
+        NombrePotsCassesDepuisDernierAgressif++;
 
         foreach(Transform morceau in morceaux)
         {
-            morceauxCasses.Enqueue(morceau);
+            morceauxCasses.AddLast(morceau);
         }
+    }
+
+    /// <summary>
+    /// Déplace le roomba vers la position du TRex
+    /// </summary>
+    public void DeplacerVersTRex()
+    {
+        DeplacerVers(trex.transform.position);
     }
 
     public void OnTriggerEnter(Collider autreObjet)
     {
         if(autreObjet.gameObject.CompareTag("MorceauCasse"))
         {
+            onMorceauRamasse?.Invoke(autreObjet.transform);
             Destroy(autreObjet.gameObject); 
         }
     }
