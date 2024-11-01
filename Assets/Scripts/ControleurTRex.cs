@@ -46,6 +46,18 @@ public class ControleurTRex : MonoBehaviour
     /// </summary>
     private AudioSource sourceAudio;
 
+    /// <summary>
+    /// Clip audio du rugissement du TRex
+    /// </summary>
+    [SerializeField]
+    private AudioClip clipRugissement;
+
+    /// <summary>
+    /// Clip audio des pas du TRex
+    /// </summary>
+    [SerializeField]
+    private AudioClip clipPas;
+
     [Header("Boxcast du rugissement")]
     [SerializeField, Tooltip("Point d'origine locale du boxcollider.")]
     private Vector3 origineBoxcast = new Vector3(0, 1.6f, 2.6f);

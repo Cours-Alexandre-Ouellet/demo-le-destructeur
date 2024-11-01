@@ -73,8 +73,10 @@ public class PotFleur : MonoBehaviour
             // Appelle l'événement pour indiquer qu'un pot a été cassé
             List<Transform> morceauARamasser = 
                 new List<Transform>(nouveauPot.GetComponentsInChildren<Transform>());
-            morceauARamasser.Add(fleur.transform);
-
+            if (fleur != null)
+            {
+                morceauARamasser.Add(fleur.transform);
+            }
             OnCasser?.Invoke(morceauARamasser.ToArray());
 
             // Liaison de l'événement de suppression

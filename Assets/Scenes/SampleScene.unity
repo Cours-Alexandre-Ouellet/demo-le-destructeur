@@ -182,6 +182,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TRex
       objectReference: {fileID: 0}
+    - target: {fileID: 6639974570394958665, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
+      propertyPath: clipPas
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b3220e4df466e74c8c056a9af4df6df, type: 3}
+    - target: {fileID: 6639974570394958665, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
+      propertyPath: angleBoxcast
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6639974570394958665, guid: 981ed480a64b38649920ce58fd0b1978, type: 3}
+      propertyPath: clipRugissement
+      value: 
+      objectReference: {fileID: 8300000, guid: 19ace854a0e06f84aa635b1e50c1de98, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
