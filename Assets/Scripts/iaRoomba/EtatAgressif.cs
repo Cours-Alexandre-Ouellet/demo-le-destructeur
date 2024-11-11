@@ -86,5 +86,7 @@ public class EtatAgressif : EtatRoomba
     public void OnSortie(Roomba roomba)
     {
         roomba.TransformerEnNormale();
+        // On gagne des points pour avoir survécu
+        CompteurPoint.Instance.AjouterPoints(100);
     }
 }

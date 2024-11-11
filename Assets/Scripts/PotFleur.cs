@@ -96,6 +96,9 @@ public class PotFleur : MonoBehaviour
             OnCasser?.Invoke(morceauARamasser.ToArray());
             estCasse = true;        // Met le pot dans l'état cassé
 
+            // Ajout des points
+            CompteurPoint.Instance.AjouterPoints(100);
+
             // Liaison de l'événement de suppression
             EnfantSupprime potCasseSuppression =
                 nouveauPot.GetComponent<EnfantSupprime>();
