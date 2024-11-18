@@ -55,6 +55,12 @@ public class GenerateurPots : MonoBehaviour
     private bool generateurActif = true;
 
     /// <summary>
+    /// Liste des pots de fleurs dans le jeu
+    /// </summary>
+    [SerializeField]
+    private TypePotFleur[] types;
+
+    /// <summary>
     /// Méthode appelée à l'initialisation de l'objet au début de l'itération
     /// de la boucle de jeu
     /// </summary>
@@ -71,6 +77,9 @@ public class GenerateurPots : MonoBehaviour
         // Crée autant d'emplacement qui il y a de pots
         emplacementsPot = new EmplacementPot[transform.childCount];
         int indice = 0;
+
+        // Charge tous les pots de fleur du dossier resources
+        types = Resources.LoadAll<TypePotFleur>("");
 
         // Permet de parcourir les enfants
         foreach(Transform enfant in transform)
@@ -133,6 +142,7 @@ public class GenerateurPots : MonoBehaviour
     }
 
 
+    
     /// <summary>
     /// Gestionnaire de l'action de création d'un pot de fleur
     /// </summary>
@@ -149,6 +159,7 @@ public class GenerateurPots : MonoBehaviour
         // Crée le nouveau pot
         PotFleur nouveauPot = Instantiate(prototypePot, transform);
         nouveauPot.SetEmplacement(emplacement);
+        nouveauPot.Initialiser(types[Random.Range(0, types.Length)]);
 
         // Lie l'événement à la roomba et au compteur dans l'interface
         nouveauPot.OnCasser.AddListener(roomba.RamasserMorceaux);

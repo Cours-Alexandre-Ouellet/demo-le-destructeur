@@ -46,9 +46,24 @@ public class PotFleur : MonoBehaviour
     /// </summary>
     private bool estCasse;
 
+    /// <summary>
+    /// Le type du pot de fleur
+    /// </summary>
+    private TypePotFleur type;
+
     private void Awake()
     {
         estCasse = false;
+    }
+
+    /// <summary>
+    /// Initialise les valeurs dans le pot de fleur
+    /// </summary>
+    /// <param name="type">Le type de pot de fleur de ce pot.</param>
+    public void Initialiser(TypePotFleur type)
+    {
+        this.type = type;
+        GetComponentInChildren<MeshRenderer>().material = type.MaterialPot;
     }
 
     /// <summary>
@@ -97,7 +112,7 @@ public class PotFleur : MonoBehaviour
             estCasse = true;        // Met le pot dans l'état cassé
 
             // Ajout des points
-            CompteurPoint.Instance.AjouterPoints(100);
+            CompteurPoint.Instance.AjouterPoints(type.Point);
 
             // Liaison de l'événement de suppression
             EnfantSupprime potCasseSuppression =
